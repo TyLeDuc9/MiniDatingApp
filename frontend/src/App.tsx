@@ -1,14 +1,13 @@
-
-
+import { AppRoutes } from "./routes/AppRoutes";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
-
-
   return (
     <>
-   
-   <div className="text-red-500">THUY OANH</div>
+      <ToastContainer position="top-right" autoClose={3000} pauseOnHover />
+      <AppRoutes />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
