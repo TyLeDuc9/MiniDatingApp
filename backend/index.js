@@ -1,15 +1,27 @@
-require("dotenv").config();
-const { connectDB } = require('./libs/db');
+const dotenv = require('dotenv');
+dotenv.config(); 
+const { connectDB } = require("./libs/db");
 const express = require("express");
 const cors = require("cors");
-const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-const app = express(); 
-const PORT = process.env.PORT || 8000
+const mongoose = require('mongoose');
+const app = express();
+
+
+const profileRoute = require("./routes/profileRoute");
+const likeRoute = require("./routes/likeRoute");
 
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+
+app.use("/api/profile", profileRoute);
+app.use("/api/like", likeRoute);
+
+
+const PORT = process.env.PORT || 8080;
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port: ${PORT}`);
+  });
 });

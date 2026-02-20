@@ -1,0 +1,11 @@
+const express = require('express');
+const router = express.Router();
+const profileController = require('../controllers/profileController');
+const { verifyToken } = require('../middlewares/authMiddleware');
+router.post("/register", profileController.register);
+router.post("/login", profileController.login);
+router.post("/logout", profileController.logout);
+router.get("/all", profileController.getAllProfile);
+router.get("/me", verifyToken, profileController.getMyProfile);
+router.get("/:id",profileController.getProfileById);
+module.exports = router;
