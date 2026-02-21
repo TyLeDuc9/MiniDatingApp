@@ -113,7 +113,7 @@ exports.login = async (req, res) => {
       message: "Đăng nhập thành công",
       token,
       user: {
-        id: user._id,
+       _id: user._id,
         email: user.email,
         name: user.name,
         age: user.age,
@@ -159,7 +159,7 @@ exports.register = async (req, res) => {
     res.status(201).json({
       message: "Đăng ký thành công",
       user: {
-        id: newUser._id,
+        _id: newUser._id,
         email: newUser.email,
         name: newUser.name,
         age: newUser.age,

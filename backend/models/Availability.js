@@ -4,7 +4,7 @@ const availabilitySchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "UserProfile",
+      ref: "Profile",
       required: true,
     },
     match: {
