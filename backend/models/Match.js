@@ -5,10 +5,16 @@ const matchSchema = new mongoose.Schema(
     users: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "UserProfile",
+        ref: "Profile",
         required: true,
       },
     ],
+    usersHash: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+
     matchedAt: {
       type: Date,
       default: Date.now,
@@ -16,7 +22,5 @@ const matchSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
-matchSchema.index({ users: 1 }, { unique: true });
 
 module.exports = mongoose.model("Match", matchSchema);
