@@ -12,8 +12,7 @@ Facebook: https://www.facebook.com/eucyldt/
 - Axios
 - React Router
 - TailwindCSS
-Frontend (React + TypeScript)
-Chịu trách nhiệm giao diện, tương tác người dùng, gọi API và hiển thị kết quả.
+- Frontend (React + TypeScript) chịu trách nhiệm giao diện, tương tác người dùng, gọi API và hiển thị kết quả.
 Logic hiển thị được tách bằng component, custom hook và Redux để dễ bảo trì.
 
 ### 🔹 Backend
@@ -23,7 +22,7 @@ Logic hiển thị được tách bằng component, custom hook và Redux để 
 - Mongoose
 - JWT – xác thực người dùng
 - bcryptjs – mã hóa mật khẩu
-Backend-Database (Node.js + Express, MongoDB)
+- Backend-Database (Node.js + Express, MongoDB)
 Xử lý toàn bộ logic nghiệp vụ như đăng nhập, like, match, lưu lịch rảnh và tìm slot trùng.
 Lưu trữ dữ liệu như profile, like, match và availability.
 
