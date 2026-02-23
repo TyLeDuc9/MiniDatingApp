@@ -28,10 +28,10 @@ Xử lý toàn bộ logic nghiệp vụ như đăng nhập, like, match, lưu l�
 Lưu trữ dữ liệu như profile, like, match và availability.
 
 ### 🔹 Lưu trữ data
-🔹 Local Storage (Frontend)
-Lưu: token, thông tin user đang đăng nhập   
-Mục đích: giữ trạng thái đăng nhập khi reload trang
-🔹 Database (MongoDB)
+- Local Storage (Frontend)
+- Lưu: token, thông tin user đang đăng nhập   
+- Mục đích: giữ trạng thái đăng nhập khi reload trang
+- Database (MongoDB)
 - User
 - Profile
 - Match
@@ -43,18 +43,18 @@ Mục đích: giữ trạng thái đăng nhập khi reload trang
 3. Nếu User B đã like User A thì tạo match
 4. Match sẽ được lưu lại và cho phép cả hai chọn lịch hẹn
 
-## 🔹 Cách hoạt động của logic tìm slot
+### 🔹 Cách hoạt động của logic tìm slot
 1. Kiểm tra User đã match hay chưa
 2. Nếu match thì cho phép hai user chọn lịch hẹn
 3. Mỗi user có thể chọn nhiều giờ trong ngày và giới hạn trong 3 tuần tới, user không được phép chọn ngày hay khoảng thời gian thực đã trôi qua, mỗi cuộc hẹn có tối đa là 1 tiếng.
 4. Nếu thời gian chọn của User A và User B cùng ngày cùng khoảng thời gian sẽ thông báo: Hai bạn có date hẹn vào: ngày-giờ.
 5. Nếu không cùng ngày hoặc thời gian hoặc User A đã chọn và User B chưa chọn và ngược lại thì thông báo: Chưa tìm được thời gian trùng. Vui lòng chọn lại.
 
-## 🔹 Đề xuất Cải thiện
+### 🔹 Đề xuất Cải thiện
 1. Thêm trạng thái lịch hẹn có thể hủy.
 2. Cập nhật lại thông tin profile.
 3. Bảo mật nâng cao.
 
-## 🔹 Đề xuất thêm tính năng mới
+### 🔹 Đề xuất thêm tính năng mới
 1. Thông báo: khi có match mới và lịch hẹn được xác nhận giúp cho người dùng dễ dàng nhận biết hơn không phải xem lịch.
 2. Chat: có thể trao đổi, trò chuyện với nhau để làm tăng khả năng thành công khi gặp và xác thực hơn.
