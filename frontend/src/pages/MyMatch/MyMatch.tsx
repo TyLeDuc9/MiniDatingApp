@@ -8,7 +8,7 @@ import { useLoading } from "../../context/LoadingContext";
 export const MyMatch = () => {
   const { matches, loading, error, currentUser } = useGetMeMatch();
 
-  const { profile, loading: profileLoading } = useSelector(
+  const { profile } = useSelector(
     (state: RootState) => state.profile,
   );
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ export const MyMatch = () => {
   useEffect(() => {
     setComponentsLoading(loading);
   }, [loading]);
-  if (loading || profileLoading) return <ComponentLoading />;
+  if (loading ) return <ComponentLoading />;
 
   if (error) return <div>Lỗi tải</div>;
 
