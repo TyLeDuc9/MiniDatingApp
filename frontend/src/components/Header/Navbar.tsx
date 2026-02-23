@@ -19,7 +19,6 @@ export const Navbar = () => {
   const handleLogout = () => {
     dispatch(logoutProfile());
     navigate("/");
-    window.location.reload();
   };
   useEffect(() => {
     const handleScroll = () => {
