@@ -120,7 +120,6 @@ exports.saveAvailability = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
-
 exports.findFirstCommonSlot = async (req, res) => {
   try {
     const { matchId } = req.params;
@@ -135,6 +134,7 @@ exports.findFirstCommonSlot = async (req, res) => {
     }
 
     const [A, B] = availabilities;
+    const commonSlots = [];
 
     for (const slotA of A.slots) {
       for (const slotB of B.slots) {
@@ -150,19 +150,34 @@ exports.findFirstCommonSlot = async (req, res) => {
         );
 
         if (start < end) {
-          return res.json({
-            found: true,
+          commonSlots.push({
             date: slotA.date,
-            from: toTimeString(start),
-            to: toTimeString(end),
+            start,
+            end,
           });
         }
       }
     }
 
+    if (commonSlots.length === 0) {
+      return res.json({
+        found: false,
+        message: "Chưa tìm được thời gian trùng. Vui lòng chọn lại.",
+      });
+    }
+
+    commonSlots.sort((a, b) => {
+      if (a.date !== b.date) return a.date.localeCompare(b.date);
+      return a.start - b.start;
+    });
+
+    const first = commonSlots[0];
+
     return res.json({
-      found: false,
-      message: "Chưa tìm được thời gian trùng. Vui lòng chọn lại.",
+      found: true,
+      date: first.date,
+      from: toTimeString(first.start),
+      to: toTimeString(first.end),
     });
   } catch (err) {
     res.status(500).json({ message: err.message });
