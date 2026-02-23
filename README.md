@@ -58,3 +58,16 @@ Lưu trữ dữ liệu như profile, like, match và availability.
 ### 🔹 Đề xuất thêm tính năng mới
 1. Thông báo: khi có match mới và lịch hẹn được xác nhận giúp cho người dùng dễ dàng nhận biết hơn không phải xem lịch.
 2. Chat: có thể trao đổi, trò chuyện với nhau để làm tăng khả năng thành công khi gặp và xác thực hơn.
+
+### 🔹 Hướng dẫn trải nghiệm
+1. Đăng ký nhập đầy đủ thông tin
+2. Đăng nhập
+3. Thích profile và chờ người khác thích lại profile của bạn
+4. Trang match sẽ hiển thị đã match với ai ấn hẹn để chọn thời gian phù hợp với bạn và chờ đối phương chọn thời gian hẹn với bạn
+5. Nếu cả hai cùng thời gian thì sẽ thông báo ngày và thời gian đã hẹn còn chưa thì vui lòng chờ đợi hoặc chọn thời gian khác hoặc duyên phận
+6. Tài khoản demo có thể trải nghiệm
+- le@gmail.com
+- oanh@gmail.com
+- trinh@gmail.com
+- tung@gmail.com
+- password cho tất cả: 123456
