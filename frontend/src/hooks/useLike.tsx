@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {  useState } from "react";
 import { likeApi } from "../service/likeApi";
 import type { LikePayload, LikeResponse } from "../types/likeType";
 import { useSelector } from "react-redux";
@@ -12,6 +12,8 @@ export const useLike = (
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<LikeResponse | null>(null);
   const currentUser = useSelector((state: RootState) => state.profile.profile);
+
+  
   const likeUser = async (payload: LikePayload) => {
     try {
       setLoading(true);

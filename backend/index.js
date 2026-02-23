@@ -11,6 +11,7 @@ const app = express();
 const profileRoute = require("./routes/profileRoute");
 const likeRoute = require("./routes/likeRoute");
 const matchRoute = require("./routes/matchRoute");
+const availabilityRoute = require("./routes/availability");
 
 app.use(cors());
 app.use(express.json());
@@ -19,6 +20,7 @@ app.use(cookieParser());
 app.use("/api/profile", profileRoute);
 app.use("/api/like", likeRoute);
 app.use("/api/match", matchRoute);
+app.use("/api/availability", availabilityRoute);
 
 
 const PORT = process.env.PORT || 8080;
