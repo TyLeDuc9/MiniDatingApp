@@ -5,28 +5,26 @@ import { getAllProfile } from "../../redux/Profile/profileThunk";
 import { AiOutlineLike } from "react-icons/ai";
 import { useLike } from "../../hooks/useLike";
 import { useGetMeLike } from "../../hooks/useGetMeLike";
-
+import { ComponentLoading } from "../../components/Loading/ComponentLoading";
+import { useLoading } from "../../context/LoadingContext";
 export const Item = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const { profiles, loading } = useSelector(
-    (state: RootState) => state.profile
+    (state: RootState) => state.profile,
   );
 
-  const { likedUserIds , setLikedUserIds} = useGetMeLike();
+  const { likedUserIds, setLikedUserIds } = useGetMeLike();
   const { handleLike, currentUser } = useLike(setLikedUserIds);
-
+  const { setComponentsLoading } = useLoading();
   useEffect(() => {
     dispatch(getAllProfile());
   }, [dispatch]);
 
-  if (loading) {
-    return (
-      <div className="flex justify-center py-20 text-lg text-gray-500">
-        Loading profiles...
-      </div>
-    );
-  }
+  useEffect(() => {
+    setComponentsLoading(loading);
+  }, [loading]);
+  if (loading) return <ComponentLoading />;
 
   return (
     <div className="py-12 px-8">
@@ -45,7 +43,9 @@ export const Item = () => {
               className="rounded-2xl bg-white p-5 shadow-md flex flex-col h-full"
             >
               <div className="mb-4 flex justify-center">
-                <div className={`flex h-20 w-20 items-center justify-center rounded-full  text-sm font-bold text-white ${isLiked?'bg-pink-500':'bg-blue-400'}`}>
+                <div
+                  className={`flex h-20 w-20 items-center justify-center rounded-full  text-sm font-bold text-white ${isLiked ? "bg-pink-500" : "bg-blue-400"}`}
+                >
                   {item.name}
                 </div>
               </div>
@@ -54,9 +54,11 @@ export const Item = () => {
                 <h3 className="text-sm font-semibold text-gray-600">
                   {item.email}
                 </h3>
-                <p className="text-sm text-gray-500 capitalize">
-                  {item.gender}
+                <p className="text-sm text-gray-500">Tuổi:{item.age}</p>
+                <p className="text-sm text-gray-500">
+                  Giới tính: {item.gender}
                 </p>
+
                 <p className="my-2 text-sm text-gray-600 line-clamp-3">
                   Mô tả: {item.bio}
                 </p>

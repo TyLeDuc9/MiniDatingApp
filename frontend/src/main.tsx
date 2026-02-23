@@ -4,13 +4,16 @@ import "./index.css";
 import App from "./App.tsx";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
+import { LoadingProvider } from "./context/LoadingContext.jsx";
 import { BrowserRouter } from "react-router-dom";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <LoadingProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </LoadingProvider>
     </Provider>
   </StrictMode>,
 );

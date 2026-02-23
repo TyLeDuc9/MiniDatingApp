@@ -3,7 +3,8 @@ import bck from "../../assets/backGround/bck.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "../../redux/store";
 import { getMeProfile } from "../../redux/Profile/profileThunk";
-
+import { ComponentLoading } from "../../components/Loading/ComponentLoading";
+import { useLoading } from "../../context/LoadingContext";
 export const MyAccount = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { profile, loading } = useSelector((state: RootState) => state.profile);
@@ -14,7 +15,12 @@ export const MyAccount = () => {
     }
   }, [dispatch, profile]);
 
-  if (loading) return <p className="text-center mt-10">Loading...</p>;
+  const { setComponentsLoading } = useLoading();
+
+  useEffect(() => {
+    setComponentsLoading(loading);
+  }, [loading]);
+  if (loading) return <ComponentLoading />;
 
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -34,37 +40,27 @@ export const MyAccount = () => {
 
             <div className="space-y-4 text-sm text-white">
               <div className="border-b border-white/20 pb-3">
-                <p className="text-xs tracking-widest">
-                  Email
-                </p>
+                <p className="text-xs tracking-widest">Email</p>
                 <p className="break-all font-medium">{profile.email}</p>
               </div>
 
               <div className="border-b border-white/20 pb-3">
-                <p className="text-xs tracking-widest">
-                  Tên
-                </p>
+                <p className="text-xs tracking-widest">Tên</p>
                 <p className="font-medium">{profile.name}</p>
               </div>
 
               <div className="border-b border-white/20 pb-3">
-                <p className="text-xs tracking-widest">
-                  Tuổi
-                </p>
+                <p className="text-xs tracking-widest">Tuổi</p>
                 <p className="font-medium">{profile.age}</p>
               </div>
 
               <div className="border-b border-white/20 pb-3">
-                <p className="text-xs tracking-widest">
-                  Giới tính
-                </p>
+                <p className="text-xs tracking-widest">Giới tính</p>
                 <p className="font-medium capitalize">{profile.gender}</p>
               </div>
 
               <div>
-                <p className="text-xs tracking-widest mb-1">
-                  Giới thiệu
-                </p>
+                <p className="text-xs tracking-widest mb-1">Giới thiệu</p>
                 <p className="leading-relaxed text-white/90">
                   {profile.bio || "Chưa cập nhật"}
                 </p>

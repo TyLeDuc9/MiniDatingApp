@@ -18,7 +18,8 @@ export const Navbar = () => {
 
   const handleLogout = () => {
     dispatch(logoutProfile());
-    navigate("/")
+    navigate("/");
+    window.location.reload();
   };
   useEffect(() => {
     const handleScroll = () => {
@@ -31,7 +32,9 @@ export const Navbar = () => {
     <>
       <nav
         className={`flex items-center justify-between px-6 py-6     ${
-          scrolled ? "bg-white/80 text-black backdrop-blur w-full tems-center justify-center shadow-md" : "bg-transparent text-white"
+          scrolled
+            ? "bg-white/80 text-black backdrop-blur w-full tems-center justify-center shadow-md"
+            : "bg-transparent text-white"
         }
 `}
       >
@@ -40,6 +43,10 @@ export const Navbar = () => {
             if (!profile && item.link === "/my-match") {
               return null;
             }
+            if (!profile && item.link === "/my-date") {
+              return null;
+            }
+
             if (
               profile &&
               (item.action === "login" || item.action === "register")

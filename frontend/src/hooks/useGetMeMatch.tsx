@@ -8,14 +8,15 @@ export const useGetMeMatch = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const currentUser = useSelector((state: RootState) => state.profile.profile);
- 
+
   useEffect(() => {
     const fetchMatches = async () => {
-      if (!currentUser?._id) return;
+      const token = localStorage.getItem("token");
+      if (!currentUser?._id || !token) return;
+
       try {
         setLoading(true);
-        const token = localStorage.getItem("token");
-        if (!token) return;
+        setError(null);
         const data = await getMyMatchesApi(token);
         setMatches(data);
       } catch (err) {

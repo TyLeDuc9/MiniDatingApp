@@ -11,11 +11,11 @@ export const useGetMeLike = () => {
 
   useEffect(() => {
     const fetchMyLikes = async () => {
+      const token = localStorage.getItem("token");
       if (!currentUser?._id) return;
 
       try {
         setLoading(true);
-        const token = localStorage.getItem("token");
         if (!token) return;
         const res = await getMyLikesApi(token);
         setLikedUserIds(res.likedUserIds);
